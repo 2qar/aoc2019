@@ -13,11 +13,9 @@ jumps = {1: 4,
 def test(innum: int):
     nums = onums[:]
     i = 0
-    input_addr = 0
     while i < len(nums) and nums[i] != 99:
         opcode = nums[i]
-        #args = [nums[nums[i+1]],nums[nums[i+2]]]
-        args = [None,None,None]
+        args = []
         if len(str(nums[i])) >= 3:
             opnum = nums[i]
             opcode = opnum % 10
@@ -25,15 +23,15 @@ def test(innum: int):
             argc = 0
             while argc < jumps[opcode]-1:
                 if modes % 10 == 1:
-                    args[argc] = nums[i+argc+1]
+                    args.append(nums[i+argc+1])
                 else:
-                    args[argc] = nums[nums[i+argc+1]]
+                    args.append(nums[nums[i+argc+1]])
                 modes = modes // 10
                 argc += 1
-        if args[0] == None:
+        else:
             argc = 1
             while argc < jumps[opcode]:
-                args[argc-1] = nums[nums[i+argc]]
+                args.append(nums[nums[i+argc]])
                 argc += 1
         if opcode == 1:
             nums[nums[i+3]] = args[0] + args[1]
