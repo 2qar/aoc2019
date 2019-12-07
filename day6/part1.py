@@ -28,10 +28,11 @@ for pair in inputs:
 count = 0
 for p in planets:
     if p != None:
-        print(f"chain for planet {p.name}:")
+        #print(f"chain for planet {p.name}:")
+        pass
     plan = p
     while plan != None:
-        print(plan.name)
+        #print(plan.name)
         if plan.last == None:
             break
         count += 1
