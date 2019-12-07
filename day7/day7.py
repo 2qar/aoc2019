@@ -55,18 +55,3 @@ for combo in [*itertools.permutations([0,1,2,3,4], 5)]:
         innum = test(onums[:], [combo[i], innum])
     out.append(innum)
 print(f"Silver: {max(out)}")
-
-'''
-# part 2
-out = []
-innum = 0
-for combo in [*itertools.permutations([5,6,7,8,9], 5)]:
-    innum = 0
-    brk = False
-    inputs = [onums[:] for i in range(5)]
-    while 1:
-        for i in range(5):
-            innum = test(inputs[i], [innum])
-        if brk:
-            break
-'''
