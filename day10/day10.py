@@ -10,7 +10,7 @@ def scan(pos: tuple) -> set:
 
     for y in range(len(amap)):
         for x in range(len(amap)):
-            if amap[x][y] == '#' and (x,y) != pos:
+            if amap[y][x] == '#' and (x,y) != pos:
                 angles.add(math.atan2(pos[1]-y,pos[0]-x))
 
     return len(angles)
@@ -19,9 +19,9 @@ max_asteroids = 0
 max_point = None
 for y in range(len(amap)):
     for x in range(len(amap)):
-        if amap[x][y] == '#':
+        if amap[y][x] == '#':
             asteroids = scan((x,y))
             if asteroids > max_asteroids:
                 max_asteroids = asteroids
-                max_point = (y,x)
+                max_point = (x,y)
 print(f"Silver: {max_asteroids}")
